@@ -47,8 +47,35 @@ function App() {
     }
   };
 
-  // Update the executeWasm function in App.js
-  // Alternative if you need to send file content
+  const uploadWasm = async () => {
+    if (!file) {
+      setOutput("Please upload a .wasm file first");
+      setIsError(true);
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("fn_name", file.name);
+    formData.append("wasm_file", file);
+
+    try {
+      const response = await fetch("http://localhost:8080/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with ${response.status}`);
+      }
+
+      const result = await response.text();
+      setOutput(result);
+    } catch (error) {
+      setOutput(`Upload failed: ${error.message}`);
+      setIsError(true);
+    }
+  };
+
   const executeWasm = async () => {
     if (!file) {
       setOutput("Please upload a .wasm file first");
@@ -61,13 +88,12 @@ function App() {
     setIsError(false);
 
     try {
-      // Send just the filename as a string, not the file content
       const response = await fetch("http://localhost:8080/execute", {
         method: "POST",
         headers: {
           "Content-Type": "text/plain",
         },
-        body: fileName, // Just the filename, not the file object
+        body: fileName, // Send just the filename
       });
 
       if (!response.ok) {
@@ -123,6 +149,10 @@ function App() {
             className="file-input"
           />
         </div>
+
+        <button className="upload-button" onClick={uploadWasm}>
+          Upload WASM
+        </button>
 
         <button
           className="execute-button"
