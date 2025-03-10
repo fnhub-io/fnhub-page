@@ -151,6 +151,7 @@ function App() {
           placeholder="Enter parameters (comma-separated)"
           value={params}
           onChange={handleParamsChange}
+          style={{ height: "50px", width: "100%" }}
         />
         <button
           className="execute-button"

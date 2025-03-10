@@ -1,165 +1,181 @@
 :root {
-  --bg-dark: #121927;
-  --bg-darker: #0c1119;
-  --bg-card: #1a2332;
-  --accent-blue: #5b9dff;
-  --text-light: #f0f2f5;
-  --text-muted: #9ba3b0;
-  --green: #10b981;
-  --error-red: #ff5252;
-  --border-light: rgba(255, 255, 255, 0.1);
+    --bg-dark: #121927;
+    --bg-darker: #0c1119;
+    --bg-card: #1a2332;
+    --accent-blue: #5b9dff;
+    --text-light: #f0f2f5;
+    --text-muted: #9ba3b0;
+    --green: #10b981;
+    --error-red: #ff5252;
+    --border-light: rgba(255, 255, 255, 0.1);
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .app-container {
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
 }
 
 .app-header {
-  text-align: center;
-  margin-bottom: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
 }
 
 .logo-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--accent-blue);
-  width: 40px;
-  height: 40px;
-  border-radius: 6px;
-  margin-right: 0.5rem;
-  position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-blue);
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    position: relative;
 }
 
 .code-bracket {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--bg-dark);
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--bg-dark);
 }
 
 .logo h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .subtitle {
-  color: var(--text-muted);
-  font-size: 1.2rem;
+    color: var(--text-muted);
+    font-size: 1.2rem;
 }
 
 .app-main {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .upload-container {
-  background-color: var(--bg-card);
-  border: 2px dashed var(--border-light);
-  border-radius: 8px;
-  padding: 3rem 2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    background-color: var(--bg-card);
+    border: 2px dashed var(--border-light);
+    border-radius: 8px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .upload-container:hover {
-  border-color: var(--accent-blue);
+    border-color: var(--accent-blue);
 }
 
 .upload-container.drag-over {
-  border-color: var(--accent-blue);
-  background-color: rgba(91, 157, 255, 0.1);
+    border-color: var(--accent-blue);
+    background-color: rgba(91, 157, 255, 0.1);
 }
 
 .upload-icon {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .file-name {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .upload-text {
-  color: var(--text-muted);
+    color: var(--text-muted);
 }
 
 .file-input {
-  display: none;
+    display: none;
 }
 
 .execute-button {
-  background-color: var(--green);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s ease;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+.upload-button {
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
 }
 
 .execute-button:hover {
-  background-color: #0da76f;
+    background-color: #0da76f;
 }
 
 .execute-button:disabled {
-  background-color: #0da76f80;
-  cursor: not-allowed;
+    background-color: #0da76f80;
+    cursor: not-allowed;
 }
 
 .output-container {
-  background-color: var(--bg-darker);
-  border-radius: 8px;
-  padding: 1rem;
+    background-color: var(--bg-darker);
+    border-radius: 8px;
+    padding: 1rem;
 }
 
 .output-container h2 {
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .output-content {
-  background-color: var(--bg-card);
-  border-radius: 6px;
-  padding: 1rem;
-  min-height: 100px;
-  font-family: monospace;
-  white-space: pre-wrap;
-  overflow-x: auto;
+    background-color: var(--bg-card);
+    border-radius: 6px;
+    padding: 1rem;
+    min-height: 100px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
 }
 
 .output-content.error {
-  color: var(--error-red);
+    color: var(--error-red);
 }
