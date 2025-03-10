@@ -10,6 +10,7 @@ function App() {
   const [isExecuting, setIsExecuting] = useState(false);
   const fileInputRef = useRef(null);
   const dropZoneRef = useRef(null);
+  const [params, setParams] = useState("");
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -23,21 +24,17 @@ function App() {
 
   const handleDragOver = (event) => {
     event.preventDefault();
-    event.stopPropagation();
     dropZoneRef.current.classList.add("drag-over");
   };
 
   const handleDragLeave = (event) => {
     event.preventDefault();
-    event.stopPropagation();
     dropZoneRef.current.classList.remove("drag-over");
   };
 
   const handleDrop = (event) => {
     event.preventDefault();
-    event.stopPropagation();
     dropZoneRef.current.classList.remove("drag-over");
-
     const droppedFile = event.dataTransfer.files[0];
     if (droppedFile && droppedFile.name.endsWith(".wasm")) {
       setFile(droppedFile);
@@ -45,6 +42,10 @@ function App() {
       setOutput("");
       setIsError(false);
     }
+  };
+
+  const handleParamsChange = (event) => {
+    setParams(event.target.value);
   };
 
   const uploadWasm = async () => {
@@ -91,9 +92,12 @@ function App() {
       const response = await fetch("http://localhost:8080/execute", {
         method: "POST",
         headers: {
-          "Content-Type": "text/plain",
+          "Content-Type": "application/json",
         },
-        body: fileName, // Send just the filename
+        body: JSON.stringify({
+          fn_name: fileName,
+          params: params.split(",").map((p) => p.trim()),
+        }),
       });
 
       if (!response.ok) {
@@ -110,31 +114,21 @@ function App() {
     }
   };
 
-  const handleContainerClick = () => {
-    fileInputRef.current.click();
-  };
-
   return (
     <div className="app-container">
       <header className="app-header">
-        <div className="logo">
-          <div className="logo-icon">
-            <span className="code-bracket">{"{"}</span>
-            <span className="code-bracket">{"}"}</span>
-          </div>
-          <h1>FnHub</h1>
-        </div>
-        <p className="subtitle">Upload and Execute WebAssembly Modules</p>
+        <h1>FnHub</h1>
+        <p>Upload and Execute WebAssembly Modules</p>
       </header>
 
       <main className="app-main">
         <div
           className="upload-container"
           ref={dropZoneRef}
-          onClick={handleContainerClick}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
+          onClick={() => fileInputRef.current.click()}
         >
           <div className="upload-icon">
             <FiUpload size={48} color="#5b9dff" />
@@ -149,25 +143,24 @@ function App() {
             className="file-input"
           />
         </div>
-
         <button className="upload-button" onClick={uploadWasm}>
           Upload WASM
         </button>
-
+        <input
+          type="text"
+          placeholder="Enter parameters (comma-separated)"
+          value={params}
+          onChange={handleParamsChange}
+        />
         <button
           className="execute-button"
           onClick={executeWasm}
           disabled={isExecuting}
         >
-          <FiPlay size={20} />
-          Execute Function
+          <FiPlay size={20} /> Execute Function
         </button>
-
-        <div className="output-container">
-          <h2>Output</h2>
-          <div className={`output-content ${isError ? "error" : ""}`}>
-            {output}
-          </div>
+        <div className={`output-container ${isError ? "error" : ""}`}>
+          {output}
         </div>
       </main>
     </div>
