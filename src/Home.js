@@ -89,7 +89,7 @@ function App() {
             whileTap={{ scale: 0.95 }}
           >
             <Server style={{ height: '2rem', width: '2rem', color: '#f97316', animation: 'float 3s ease-in-out infinite' }} />
-            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>RustServe</span>
+            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>ORBIT</span>
           </motion.div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <motion.a 
@@ -248,7 +248,7 @@ function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              Why Choose RustServe?
+              Why Choose Orbit?
             </motion.h2>
             <div style={{ 
               display: 'grid', 
@@ -402,9 +402,9 @@ function App() {
             whileHover={{ scale: 1.05 }}
           >
             <Server style={{ height: '1.5rem', width: '1.5rem', color: '#f97316' }} />
-            <span style={{ color: 'white', fontWeight: '600' }}>RustServe</span>
+            <span style={{ color: 'white', fontWeight: '600' }}>Orbit</span>
           </motion.div>
-          <p style={{ color: '#9ca3af' }}>© 2025 RustServe. All rights reserved.</p>
+          <p style={{ color: '#9ca3af' }}>© 2025 ORBIT. All rights reserved.</p>
         </motion.div>
       </footer>
     </animated.div>

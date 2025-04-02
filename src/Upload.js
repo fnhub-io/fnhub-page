@@ -432,7 +432,7 @@ function App() {
     <div style={styles.appContainer}>
       <header style={styles.appHeader}>
         <div style={styles.logoContainer}>
-          <div style={styles.logo}>F<span style={styles.logoSpan}>n</span>H<span style={styles.logoSpan}>u</span>b</div>
+          <div style={styles.logo}>O<span style={styles.logoSpan}>R</span>B<span style={styles.logoSpan}>I</span>T</div>
         </div>
         <h1 style={styles.headerTitle}>WebAssembly Function Hub</h1>
         <p style={styles.headerSubtitle}>Upload, manage, and execute WebAssembly modules with ease</p>
@@ -544,7 +544,7 @@ function App() {
       </main>
 
       <footer style={styles.appFooter}>
-        <p>FnHub - WebAssembly Function Management Tool</p>
+        <p>Orbit - WebAssembly Function Management Tool</p>
         <p style={styles.version}>Version 1.0.0</p>
       </footer>
 
