@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Server, Code2, Zap, Cloud, ArrowRight, Github } from 'lucide-react';
+import { Code2, Zap, Cloud, ArrowRight, Github } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useSpring, animated } from '@react-spring/web';
-
 function App() {
   const { scrollYProgress } = useScroll();
   const [isVisible, setIsVisible] = useState(false);
@@ -88,8 +87,16 @@ function App() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Server style={{ height: '2rem', width: '2rem', color: '#f97316', animation: 'float 3s ease-in-out infinite' }} />
-            <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>ORBIT</span>
+            {/* Replace the Server icon and text with the logo image */}
+            <img 
+  src="/logo.png" 
+  alt="ORBIT Logo" 
+  style={{ 
+    maxHeight: '15vh', // Limits the image height
+    objectFit: 'contain' // Keeps the aspect ratio
+  }} 
+/>
+
           </motion.div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <motion.a 
@@ -154,9 +161,9 @@ function App() {
             style={{ 
               maxWidth: '1280px', 
               width: '100%',
-              padding: '0 1.5rem'
+              padding: '0 1.5rem',
+              scale
             }}
-            style={{ scale }}
           >
             <motion.h1 
               style={{ 
@@ -401,8 +408,15 @@ function App() {
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}
             whileHover={{ scale: 1.05 }}
           >
-            <Server style={{ height: '1.5rem', width: '1.5rem', color: '#f97316' }} />
-            <span style={{ color: 'white', fontWeight: '600' }}>Orbit</span>
+            {/* Update the footer logo as well */}
+            <img 
+              src="/path/to/orbit-logo.png" 
+              alt="ORBIT Logo" 
+              style={{ 
+                height: '1.5rem', 
+                objectFit: 'contain'
+              }} 
+            />
           </motion.div>
           <p style={{ color: '#9ca3af' }}>© 2025 ORBIT. All rights reserved.</p>
         </motion.div>
