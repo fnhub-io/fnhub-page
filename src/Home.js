@@ -366,7 +366,7 @@ function App() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span>Go to Compiler</span>
+                <span>Go to Uploader</span>
                 <ArrowRight style={{ height: '1.25rem', width: '1.25rem' }} />
               </motion.a>
             </motion.div>
