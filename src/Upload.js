@@ -9,7 +9,7 @@ function App() {
   const [isExecuting, setIsExecuting] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const fileInputRef = useRef(null);
   const dropZoneRef = useRef(null);
   const [params, setParams] = useState("");
@@ -21,7 +21,7 @@ function App() {
 
   // Apply theme to body
   useEffect(() => {
-    document.body.style.backgroundColor = theme === "light" ? "#ffffff" : "#121212";
+    document.body.style.backgroundColor = theme === "light" ? "#ffffff" : "#0f172a";
     document.body.style.color = theme === "light" ? "#333333" : "#f0f0f0";
     document.body.style.transition = "all 0.3s ease";
   }, [theme]);
@@ -40,10 +40,10 @@ function App() {
   const handleDragOver = (event) => {
     event.preventDefault();
     if (dropZoneRef.current) {
-      dropZoneRef.current.style.borderColor = "#5b9dff";
+      dropZoneRef.current.style.borderColor = "#f97316";
       dropZoneRef.current.style.backgroundColor = theme === "light" 
-        ? "rgba(91, 157, 255, 0.05)" 
-        : "rgba(91, 157, 255, 0.1)";
+        ? "rgba(249, 115, 22, 0.05)" 
+        : "rgba(249, 115, 22, 0.1)";
       dropZoneRef.current.style.transform = "translateY(-2px)";
     }
   };
@@ -51,8 +51,8 @@ function App() {
   const handleDragLeave = (event) => {
     event.preventDefault();
     if (dropZoneRef.current) {
-      dropZoneRef.current.style.borderColor = theme === "light" ? "#e0e0e0" : "#444444";
-      dropZoneRef.current.style.backgroundColor = theme === "light" ? "#ffffff" : "#1e1e1e";
+      dropZoneRef.current.style.borderColor = theme === "light" ? "#e0e0e0" : "#334155";
+      dropZoneRef.current.style.backgroundColor = theme === "light" ? "#ffffff" : "#1e293b";
       dropZoneRef.current.style.transform = "translateY(0)";
     }
   };
@@ -60,8 +60,8 @@ function App() {
   const handleDrop = (event) => {
     event.preventDefault();
     if (dropZoneRef.current) {
-      dropZoneRef.current.style.borderColor = theme === "light" ? "#e0e0e0" : "#444444";
-      dropZoneRef.current.style.backgroundColor = theme === "light" ? "#ffffff" : "#1e1e1e";
+      dropZoneRef.current.style.borderColor = theme === "light" ? "#e0e0e0" : "#334155";
+      dropZoneRef.current.style.backgroundColor = theme === "light" ? "#ffffff" : "#1e293b";
       dropZoneRef.current.style.transform = "translateY(0)";
     }
     
@@ -153,7 +153,7 @@ function App() {
     }
   };
 
-  // Inline styles
+  // Inline styles with color theme from first application
   const styles = {
     appContainer: {
       display: 'flex',
@@ -162,21 +162,22 @@ function App() {
       maxWidth: '1200px',
       margin: '0 auto',
       padding: '20px',
-      fontFamily: "'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif"
+      fontFamily: "'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif",
+      background: theme === 'light' ? '#ffffff' : '#0f172a',
     },
     appHeader: {
       textAlign: 'center',
       padding: '30px 20px',
       borderRadius: '12px',
       marginBottom: '30px',
-      background: theme === 'light' 
-        ? 'linear-gradient(135deg, #5b9dff, #64e3ff)'
-        : 'linear-gradient(135deg, #2574f4, #00b7d8)',
+      background: 'linear-gradient(-45deg, #0f172a, #1e293b, #1a1c2c, #2d1b30)',
+      backgroundSize: '400% 400%',
       color: 'white',
       boxShadow: theme === 'light'
         ? '0 4px 20px rgba(0, 0, 0, 0.1)'
         : '0 4px 20px rgba(0, 0, 0, 0.3)',
-      position: 'relative'
+      position: 'relative',
+      animation: 'gradientBG 15s ease infinite'
     },
     logoContainer: {
       marginBottom: '15px'
@@ -186,14 +187,14 @@ function App() {
       fontWeight: '700',
       letterSpacing: '1px',
       background: '#ffffff',
-      color: '#2574f4',
+      color: '#f97316',
       padding: '8px 20px',
       borderRadius: '30px',
       display: 'inline-block',
-      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)'
+      boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)'
     },
     logoSpan: {
-      color: '#00b7d8'
+      color: '#ea580c'
     },
     headerTitle: {
       fontSize: '2.5rem',
@@ -233,7 +234,7 @@ function App() {
       left: '0',
       right: '0',
       bottom: '0',
-      backgroundColor: theme === 'dark' ? '#2196F3' : '#ccc',
+      backgroundColor: theme === 'dark' ? '#f97316' : '#ccc',
       transition: '.4s',
       borderRadius: '34px'
     },
@@ -255,22 +256,26 @@ function App() {
       gap: '30px'
     },
     section: {
-      backgroundColor: theme === 'light' ? '#f5f5f5' : '#1e1e1e',
+      backgroundColor: theme === 'light' ? '#f5f5f5' : 'rgba(30, 41, 59, 0.5)',
       borderRadius: '12px',
       padding: '25px',
       boxShadow: theme === 'light' 
         ? '0 4px 15px rgba(0, 0, 0, 0.05)'
         : '0 4px 15px rgba(0, 0, 0, 0.2)',
+      backdropFilter: 'blur(10px)',
       transition: 'all 0.3s ease',
-      animation: 'fadeIn 0.5s ease-out'
+      animation: 'fadeIn 0.5s ease-out',
+      border: theme === 'light' 
+        ? 'none' 
+        : '1px solid rgba(249, 115, 22, 0.2)'
     },
     sectionTitle: {
       marginBottom: '20px',
       fontSize: '1.5rem',
-      color: '#5b9dff',
+      color: '#f97316',
       borderBottom: theme === 'light' 
         ? '2px solid #e0e0e0'
-        : '2px solid #444444',
+        : '2px solid #334155',
       paddingBottom: '10px',
       display: 'flex',
       alignItems: 'center'
@@ -280,7 +285,7 @@ function App() {
         ? '2px solid #4CAF50'
         : theme === 'light'
           ? '2px dashed #e0e0e0'
-          : '2px dashed #444444',
+          : '2px dashed #334155',
       borderRadius: '12px',
       padding: '40px',
       textAlign: 'center',
@@ -293,7 +298,8 @@ function App() {
           : 'rgba(76, 175, 80, 0.1)'
         : theme === 'light'
           ? '#ffffff'
-          : '#1e1e1e'
+          : 'rgba(30, 41, 59, 0.7)',
+      backdropFilter: 'blur(10px)'
     },
     uploadIcon: {
       marginBottom: '15px',
@@ -303,11 +309,11 @@ function App() {
       fontSize: '1.2rem',
       fontWeight: '600',
       marginBottom: '10px',
-      color: theme === 'light' ? '#2574f4' : '#5b9dff',
+      color: theme === 'light' ? '#f97316' : '#f97316',
       wordBreak: 'break-all'
     },
     uploadText: {
-      color: '#888',
+      color: theme === 'light' ? '#888' : '#9ca3af',
       fontSize: '0.9rem'
     },
     fileInput: {
@@ -325,7 +331,8 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center',
       gap: '10px',
-      width: '100%'
+      width: '100%',
+      boxShadow: '0 0 20px rgba(249, 115, 22, 0.4)'
     },
     buttonDisabled: {
       opacity: '0.6',
@@ -337,13 +344,13 @@ function App() {
     uploadButton: {
       backgroundColor: uploadSuccess 
         ? '#4CAF50' 
-        : '#5b9dff',
+        : '#f97316',
       color: 'white',
       position: 'relative',
       overflow: 'hidden'
     },
     executeButton: {
-      backgroundColor: '#00b7d8',
+      backgroundColor: '#ea580c',
       color: 'white',
       position: 'relative',
       overflow: 'hidden'
@@ -362,14 +369,15 @@ function App() {
       borderRadius: '8px',
       border: theme === 'light'
         ? '2px solid #e0e0e0'
-        : '2px solid #444444',
+        : '2px solid #334155',
       fontSize: '1rem',
       transition: 'all 0.3s ease',
-      backgroundColor: theme === 'light' ? '#ffffff' : '#2c2c2c',
-      color: theme === 'light' ? '#333333' : '#f0f0f0'
+      backgroundColor: theme === 'light' ? '#ffffff' : 'rgba(30, 41, 59, 0.7)',
+      color: theme === 'light' ? '#333333' : '#f0f0f0',
+      backdropFilter: 'blur(10px)'
     },
     outputContainer: {
-      backgroundColor: theme === 'light' ? '#ffffff' : '#252525',
+      backgroundColor: theme === 'light' ? '#ffffff' : 'rgba(30, 41, 59, 0.5)',
       borderRadius: '8px',
       padding: '20px',
       minHeight: '200px',
@@ -377,20 +385,14 @@ function App() {
       border: isError
         ? '2px solid #f44336'
         : output
-          ? '2px solid #5b9dff'
+          ? '2px solid #f97316'
           : theme === 'light'
             ? '2px solid #e0e0e0'
-            : '2px solid #444444',
+            : '2px solid #334155',
       fontFamily: "'Consolas', 'Monaco', 'Courier New', monospace",
       position: 'relative',
       transition: 'all 0.3s ease',
-      backgroundColor: isError
-        ? theme === 'light'
-          ? 'rgba(244, 67, 54, 0.05)'
-          : 'rgba(244, 67, 54, 0.1)'
-        : theme === 'light'
-          ? '#ffffff'
-          : '#252525',
+      backdropFilter: 'blur(10px)',
       color: isError ? '#f44336' : theme === 'light' ? '#333333' : '#f0f0f0'
     },
     outputText: {
@@ -409,18 +411,18 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100%',
-      color: '#888',
+      color: theme === 'light' ? '#888' : '#9ca3af',
       fontStyle: 'italic'
     },
     appFooter: {
       marginTop: '40px',
       textAlign: 'center',
       padding: '20px',
-      color: '#888',
+      color: theme === 'light' ? '#888' : '#9ca3af',
       fontSize: '0.9rem',
       borderTop: theme === 'light'
         ? '1px solid #e0e0e0'
-        : '1px solid #444444'
+        : '1px solid #334155'
     },
     version: {
       marginTop: '5px',
@@ -465,7 +467,7 @@ function App() {
             <div style={styles.uploadIcon}>
               {file ? 
                 <FiCheckCircle size={48} color="#4CAF50" /> : 
-                <FiUpload size={48} color={theme === "light" ? "#5b9dff" : "#5b9dff"} />
+                <FiUpload size={48} color={theme === "light" ? "#f97316" : "#f97316"} />
               }
             </div>
             <p style={styles.fileName}>{fileName}</p>
@@ -562,6 +564,27 @@ function App() {
             }
           }
           
+          @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          
+          @keyframes glow {
+            from {
+              box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
+            }
+            to {
+              box-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+            }
+          }
+          
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
+          
           /* Toggle Switch Animation */
           .toggle-slider {
             position: absolute;
@@ -570,7 +593,7 @@ function App() {
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: ${theme === 'dark' ? '#2196F3' : '#ccc'};
+            background-color: ${theme === 'dark' ? '#f97316' : '#ccc'};
             transition: .4s;
             border-radius: 34px;
           }
@@ -589,11 +612,11 @@ function App() {
           }
           
           .toggle-input:checked + .toggle-slider {
-            background-color: #2196F3;
+            background-color: #f97316;
           }
           
           .toggle-input:focus + .toggle-slider {
-            box-shadow: 0 0 1px #2196F3;
+            box-shadow: 0 0 1px #f97316;
           }
         `}
       </style>
