@@ -89,11 +89,12 @@ function App() {
           >
             {/* Replace the Server icon and text with the logo image */}
             <img 
-  src="/logo.png" 
+  src="/logo2.jpeg" 
   alt="ORBIT Logo" 
   style={{ 
-    maxHeight: '15vh', // Limits the image height
-    objectFit: 'contain' // Keeps the aspect ratio
+    //maxHeight: '16vh',
+    width:'10vw', // Limits the image height
+   // objectFit: 'contain' // Keeps the aspect ratio
   }} 
 />
 
